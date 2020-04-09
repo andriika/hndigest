@@ -1,0 +1,25 @@
+env:
+  commonjs: true
+  es6: true
+  node: true
+extends:
+  - airbnb-base
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaVersion: 2018
+rules:
+  no-use-before-define: off
+  no-tabs: off
+  padded-blocks: off
+  no-param-reassign: off
+  comma-dangle: off
+  indent: [error, 4]
+  dot-location: [error, object]
+  no-unused-vars: [ error, { argsIgnorePattern: ^_ }]
+overrides:
+  - files: ['*.test.js']
+    rules:
+      no-undef: off
+      no-console: off

@@ -1,0 +1,30 @@
+{
+  "name": "hndigest",
+  "version": "1.0.0",
+  "description": "Serverless app that scrapes hackernews frontpage every hour, and then aggregates and publishes a list of the top stories every day",
+  "scripts": {
+    "test": "eslint . && jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andriika/hndigest.git"
+  },
+  "author": "andriika",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^10.7.0",
+    "mongodb": "^3.5.5",
+    "tumblr.js": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.2.7"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node"
+  }
+}

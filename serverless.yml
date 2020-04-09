@@ -1,0 +1,47 @@
+# See list of all available properties at
+# https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+service: hndigest
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  versionFunctions: false
+  memorySize: 512
+  logRetentionInDays: 14
+  stage: prod
+  environment:
+    # MongoDB connection string URI [1]
+    # [1] https://docs.mongodb.com/manual/reference/connection-string/
+    MONGO_URI: -- paste here
+    MONGO_DB: ${self:service}-${self:provider.stage}
+    HACKERNEWS_URL: https://news.ycombinator.com
+    STORIES_LIMIT: 10
+    AGGR_PERIOD_HOURS: 24
+    # See Tumblr API [1]. To get an oauth keys you must register an application [2].
+    # [1] https://www.tumblr.com/docs/en/api/v2
+    # [2] https://www.tumblr.com/oauth/apps
+    TUMBLR_CONSUMER_KEY: -- paste here
+    TUMBLR_CONSUMER_SECRET: -- paste here
+    TUMBLR_TOKEN: -- paste here
+    TUMBLR_TOKEN_SECRET: -- paste here
+    # Tumblr's blog standard or custom hostname. See blog idenitifiers [1].
+    # [1] https://www.tumblr.com/docs/en/api/v2#blog-identifiers
+    TUMBLR_BLOG: -- paste here
+
+functions:
+  scrape:
+    handler: src/handler.scrape
+    events:
+      - schedule: cron(0 * * * ? *) # every hour
+  publish:
+    handler: src/handler.publish
+    events:
+      - schedule: cron(0 14 * * ? *) # every day at 14:00 gmt
+
+package:
+  exclude:
+    - ./**
+    - '!node_modules/**'
+  include:
+    - src/**
