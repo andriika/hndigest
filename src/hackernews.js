@@ -42,7 +42,7 @@ async function scrape(limit) {
  * @returns {Entry} object representing parsed cheerio element
  */
 function entry($el) {
-    const $a = $el.find('a.storylink');
+    const $a = $el.find('a.titlelink');
     const $nxt = $el.next();
 
     const title = $a.text();

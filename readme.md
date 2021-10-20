@@ -1,4 +1,4 @@
-Backend for https://hndigest.tumblr.com. Essentially, a serverless bot that scrapes hackernews frontpage every hour, and then aggregates and publishes a list of the top stories every day. Implemented with AWS Lambda for serverless computing, MongoDB for storage, AWS CloudWatch Rules for scheduling and The Serverless Framework for provisioning.
+Backend for https://hndigest.tumblr.com. A serverless bot that scrapes hackernews frontpage every hour, and then aggregates and publishes a list of the top stories every day. Implemented with AWS Lambda for serverless computing, MongoDB for storage, AWS CloudWatch Rules for scheduling and The Serverless Framework for provisioning.
 
 ## Prerequisites
 
